@@ -1,0 +1,36 @@
+var myHeaders = new Headers();
+myHeaders.append("Host", "api.sporteasy.net");
+myHeaders.append("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0");
+myHeaders.append("Accept", "application/json");
+myHeaders.append("Accept-Language", "en");
+myHeaders.append("Accept-Encoding", "gzip, deflate");
+myHeaders.append("Referer", "https://www.sporteasy.net/");
+myHeaders.append("content-type", "application/json");
+myHeaders.append("x-csrftoken", "NJpyyLNY5lrPq4AHEg1Rtw8iHixj6g0TgzAjL1cjnpW4L0IXNA92nLWyia84M41F");
+myHeaders.append("x-webapp-version", "1.7.6");
+myHeaders.append("Content-Length", "139");
+myHeaders.append("Origin", "https://www.sporteasy.net");
+myHeaders.append("Connection", "close");
+myHeaders.append("Sec-Fetch-Dest", "empty");
+myHeaders.append("Sec-Fetch-Mode", "cors");
+myHeaders.append("Sec-Fetch-Site", "same-site");
+
+var raw = JSON.stringify({
+  "first_name": "hello1",
+  "last_name": "hello",
+  "email": "hisab26483@brandoza.com",
+  "phone_number": null,
+  "date_of_birth": null
+});
+
+var requestOptions = {
+  method: 'PUT',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://api.sporteasy.net/v2.1/me/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
